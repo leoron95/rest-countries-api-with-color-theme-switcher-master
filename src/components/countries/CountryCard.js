@@ -19,7 +19,7 @@ export const CountryCard = ({
         <Skeleton isLoaded={!loading}> </Skeleton>}
         <Link to={`/country/${name}`}>
 
-            <Box  height='full' width='full' borderRadius='lg' overflow='hidden' boxShadow='md' cursor='pointer' className='animate__animated animate__fadeIn' bg={bgColor} color={textColor}  >
+            <Box  height='full' width='full' borderRadius='lg' overflow='hidden'  cursor='pointer' className='animate__animated animate__fadeIn shadow card' bg={bgColor} color={textColor}  >
                 <img src={flag}  alt={name} ></img>
                     <Box
                         mt='6'

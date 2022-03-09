@@ -51,19 +51,19 @@ const countriesRegion = getCountriesByRegion(countries, selectedRegion)
                     <InputGroup  >
                         <InputLeftElement
                             pointerEvents='none'
-                            children={<SearchIcon color='gray.300' />}
+                            children={<SearchIcon color='gray.500' />}
                                 />
 
                                 <Input type='text'
                                         placeholder='Search for a country...'
-                                        className='form-control'
+                                        className='form-control shadow'
                                         name='searchText'
                                         autoComplete='off'
                                         onChange={handleInputChange}
                                         value={searchText}
                                         width='sm'
                                         size='lg'
-                                        shadow='lg'
+                                        // shadow='lg'
                                         bg={bgColor}
                                         border='none'
                                         />
@@ -79,10 +79,10 @@ const countriesRegion = getCountriesByRegion(countries, selectedRegion)
                     value={selectedRegion}
                     onChange={handleSelectRegion}
                     placeholder='Filter by Region'
-                    shadow='lg'
                     bg={bgColor}
                     color={textColor}
                     border='none'
+                    className='shadow'
                     >
                         <option value='Africa'>Africa</option>
                         <option value='Americas'>America</option>
