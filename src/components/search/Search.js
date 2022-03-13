@@ -45,8 +45,16 @@ const countriesRegion = getCountriesByRegion(countries, selectedRegion)
 
     return (
         <>
-        <Flex width='full'>
-            <Box  mt='10' mb='10' >
+        <Flex width='full' 
+        // className='regionSelector'
+        flexDirection={['column','column', 'row', 'row']}
+        justifyContent='space-between'
+        >
+            <Box  mt='10' 
+            mb={['0px', '10px']}
+            
+            
+            >
                 <form onSubmit={handleSearch}>
                     <InputGroup  >
                         <InputLeftElement
@@ -61,9 +69,9 @@ const countriesRegion = getCountriesByRegion(countries, selectedRegion)
                                         autoComplete='off'
                                         onChange={handleInputChange}
                                         value={searchText}
-                                        width='sm'
+                                        // width={[null, 'lg']}
+                                        width='lg'
                                         size='lg'
-                                        // shadow='lg'
                                         bg={bgColor}
                                         border='none'
                                         />
@@ -72,9 +80,8 @@ const countriesRegion = getCountriesByRegion(countries, selectedRegion)
 
         </Box>
 
-        <Spacer />
 
-            <Box mt='10' mb='10'>
+            <Box mt='10' mb='10' >
                 <Select 
                     value={selectedRegion}
                     onChange={handleSelectRegion}
@@ -82,7 +89,8 @@ const countriesRegion = getCountriesByRegion(countries, selectedRegion)
                     bg={bgColor}
                     color={textColor}
                     border='none'
-                    className='shadow'
+                    size='lg'
+                    className='shadow regionSelector'
                     >
                         <option value='Africa'>Africa</option>
                         <option value='Americas'>America</option>
@@ -97,7 +105,7 @@ const countriesRegion = getCountriesByRegion(countries, selectedRegion)
         {
             (selectedRegion !== '') 
             ?
-            <Grid templateColumns='repeat(4, 1fr)' gap={6}>
+            <Grid templateColumns={['repeat(1, 1fr)','repeat(2, 1fr)','repeat(3, 1fr)','repeat(4, 1fr)']} gap={6}>
             {
                 countriesRegion.map(country => (
                     <CountryCard
@@ -114,7 +122,7 @@ const countriesRegion = getCountriesByRegion(countries, selectedRegion)
             : 
             (searchText !== '') 
             &&
-            <Grid templateColumns='repeat(4, 1fr)' gap={6}>
+            <Grid templateColumns={['repeat(1, 1fr)','repeat(2, 1fr)','repeat(3, 1fr)','repeat(4, 1fr)']} gap={6}>
                     {
                         countriesSearch.map(country => (
                             <CountryCard

@@ -9,7 +9,14 @@ const config = {
   useSystemColorMode: false,
 }
 
+const customFonts = {
+  fonts:{
+    body: 'Nunito Sans',
+    h1: 'Nunito Sans'
+  }
+}
+
 // 3. extend the theme
-const theme = extendTheme({ config })
+const theme = extendTheme({ config, customFonts })
 
 export default theme

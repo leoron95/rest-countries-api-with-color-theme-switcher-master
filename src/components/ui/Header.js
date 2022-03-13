@@ -10,29 +10,37 @@ export const Header = ({bgColor}) => {
     
     return (
         <>
-        <Container maxW='8xl' centerContent bg={bgColor} color={textColor}>
-        <Flex width='full' height='full' >
-        <Box >
-            <Heading mt='5' mb='5' size='md'>Where in the World?</Heading>
-        </Box>
-        <Spacer />
-      
+        <Container 
+        // maxW={['container.xl','8xl']} 
+        // centerContent 
+        // maxWidth= 'full'
+        bg={bgColor} 
+        color={textColor} 
+        // className='container-header'
+        // width={['100%', '100%']}
+        // margin='0px'
+        maxW={[null,'1440px']}
+        // width='full'
+        paddingX={['0px','16px']}
+        
+        // width='max-content'
+        >
+        <Flex  justifyContent='space-between' >
 
-            
-            <Box >
-                <Button
-                    leftIcon={colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
+        <Heading mt='5' mb='5' as='h1'  fontSize={['sm','28px']}  fontFamily='Nunito Sans' fontWeight='800' >Where in the World?</Heading>
+ 
+            <Button
+                    leftIcon={colorMode === 'light' ? <MoonIcon  /> : <SunIcon />}
                     colorScheme='black' 
                     variant='unstyled'
                     mt='4' mb='4'
-                    size='md'
+                    size={['sm','md']}
+                    fontSize={['sm','md']}
                     width='fit-content'
                     onClick={toggleColorMode}
                     >
                         {colorMode === 'light' ? 'Dark' : 'Light'} Mode 
                 </Button>
-
-            </Box>
 
         </Flex>
         </Container>

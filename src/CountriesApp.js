@@ -12,7 +12,7 @@ export const CountriesApp = () => {
                 <Header />
             </Container> */}
         
-            <Container maxW='8xl' bg='bgColor' >
+            <Container maxW='8xl' bg='bgColor' width='100%'>
                 <Search/>
             </Container>
 

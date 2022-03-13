@@ -1,4 +1,4 @@
-import { Box, Center, Skeleton, Text, useColorModeValue } from '@chakra-ui/react'
+import { Box, Heading, List, ListItem, Skeleton, useColorModeValue } from '@chakra-ui/react'
 import {Link} from 'react-router-dom';
 import React from 'react'
 
@@ -17,38 +17,39 @@ export const CountryCard = ({
         <>
         {loading && 
         <Skeleton isLoaded={!loading}> </Skeleton>}
-        <Link to={`/country/${name}`}>
-
-            <Box  height='full' width='full' borderRadius='lg' overflow='hidden'  cursor='pointer' className='animate__animated animate__fadeIn shadow card' bg={bgColor} color={textColor}  >
+            <Link to={`/country/${name}`}>
+            
+            <Box  height='full' width='full' borderRadius='lg' overflow='hidden'  cursor='pointer' className='animate__animated animate__fadeIn shadow card' bg={bgColor} color={textColor} >
+                
                 <img src={flag}  alt={name} ></img>
+                    
                     <Box
                         mt='6'
                         ml='5'
-                        fontWeight='bold'
-                        as='h1'
-                        lineHeight='tight'
+                        // as='h2'
+                        lineHeight='taller'
+                        className='card-title'
+                        fontWeight='800'
                         >
-                            {name}
+                            <Heading as='h2' fontWeight='800' fontFamily='Nunito Sans' fontSize='21px'>{name}</Heading>
                     </Box>
-                    <Box
-                        mt='3'
-                        mb='5'
-                        ml='5'
-                        as='h1'
-                        lineHeight='tight'
-                        isTruncated
-                        >
-                            <ul>
-                                <li><b>Population: </b>{populationFormatted}</li>
-                                <li><b>Region: </b>{region}</li>
-                                <li><b>Capital: </b>{capital}</li>
-                            </ul>
-                    </Box>
+
+                        <Box
+                            mt='3'
+                            mb='5'
+                            ml='5'
+                            lineHeight='taller'
+                            isTruncated
+                            fontWeight='300'
+                            >
+                                <List>
+                                    <ListItem><b>Population: </b>{populationFormatted}</ListItem>
+                                    <ListItem><b>Region: </b>{region}</ListItem>
+                                    <ListItem><b>Capital: </b>{capital}</ListItem>
+                                </List>
+                        </Box>
             </Box>
-
         </Link>
-
-
         </>
     )
 }

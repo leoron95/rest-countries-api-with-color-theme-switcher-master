@@ -10,7 +10,9 @@ export const AppRouter = () => {
     const bgColor = useColorModeValue('white', 'hsl(209, 23%, 22%)')
     return (
         <BrowserRouter>
-            <Container maxW='full'  boxShadow='lg' bg={bgColor} >
+            <Container maxW={[null,'full']}  boxShadow='lg' bg={bgColor} 
+
+  >
                 <Header bgColor={bgColor}/>
             </Container>
             <Routes>

@@ -3,8 +3,8 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import {getCountry} from '../../selectors/getCountry'
 import {useFetchCountries} from '../../hooks/useFetchCountries';
 
-import { Box, Center, Text, Flex, Spacer, Square, Grid, GridItem, Skeleton, useColorModeValue } from '@chakra-ui/react'
-import { Button, ButtonGroup, Image,Container, Heading} from '@chakra-ui/react'
+import { Box, Flex, Skeleton, useColorModeValue, List, ListItem, Stack, Text, HStack,} from '@chakra-ui/react'
+import { Button, Image,Container, Heading} from '@chakra-ui/react'
 import { ArrowBackIcon } from '@chakra-ui/icons';
 import { Header } from '../ui/Header';
 import { useFetch } from '../../hooks/useFetch';
@@ -45,6 +45,7 @@ export const CountryDetails = () => {
     } = country
     console.log(country);
 
+
     const domains = topLevelDomain?.map( domain => domain)
     const countryCurrencies = currencies?.map(currency => currency.name)
     const countryCurrenciesSymbol = currencies?.map(currency => currency.symbol)
@@ -69,33 +70,22 @@ export const CountryDetails = () => {
         return countryName;
       }
 
-    
-
     const handleReturn = () => {
         navigate('/');
     }
     return (
         <>
         
-        <Container maxW='8xl'  >
+        <Container width='100%' maxW='1440px' fontSize='16px'  >
 
-            
-        
-        {/* <div>
-            <Header/>
-        </div> */}
         <Box mb='50' >
             <Button
                     onClick={handleReturn}
-                    leftIcon={<ArrowBackIcon />}
-                    // colorScheme='gray'  
+                    leftIcon={<ArrowBackIcon />} 
                     variant='outline'
                     mt='10'
-                    // ml='10'
                     bg={bgColor}
                     shadow='lg'
-
-                    
                 >
                         Back
             </Button>
@@ -103,118 +93,124 @@ export const CountryDetails = () => {
             
 
             <div className='animate__animated animate__fadeIn'>
-        {/* <Grid templateColumns='repeat(3, 1fr)' templateRows='repeat(2, 1fr)' >  */}
-        <Flex >
+
+        <Flex 
+            flexDirection={['column', 'row']}
+            justifyContent='flex-start'
+            >
 
         <Skeleton isLoaded={!loading}> 
-    <Box gridRowStart='1'
-        gridColumnStart='1'
-        gridRowEnd='2'
-        gridColumnEnd='2' 
-        width='xl' 
-        height = 'lg'  
+    <Box 
+
+        // width={['100%', '100']}
+        // width='100%'
+            // height = 'xl'  
         >
         <Image 
             src={flag}
             alt={name}
+            height = {[null,'sm']}
+            // height='lg'
+            width='xl'
+            // maxWidth={['sm','xl']}
+            // maxW='1400px'
+            // width='90%'
+            // height='512px'
+            // boxSize='512px'
+
         />
+
     </Box>
     </Skeleton>
-    
-   
-        <Box gridRowStart='1'
-            gridColumnStart='2'
-            gridRowEnd='2'
-            gridColumnEnd='4'
-            ml='50'
-            mt='30'
-        >
-            <Heading>
-               {name}
-           </Heading>
+        <Box 
 
-        
+            ml={[null,'130']}
+            mt={['30', '30']}
+        >
+
+            <Heading as='h1' fontFamily='Nunito Sans' fontWeight='800' fontSize='32px'>
+                {name}
+            </Heading>
 
         <Box 
-            lineHeight='taller'>
-            <div className='list'>
-                <ul>
-                    <li><b>Native name: </b>{nativeName}</li>
-                    <li><b>Population: </b>{populationFormatted}</li>
-                    <li><b>Region: </b>{region}</li>
-                    <li><b>Sub Region: </b>{subregion}</li>
-                    {capital && <li><b>Capital: </b>{capital}</li>}
-                </ul>
+            lineHeight='taller'
+            >
 
-                <ul className='moreInfo'>
-                    <li><b>Top Level Domain: </b>{formattedDomain}</li>
-                    {countryCurrencies && <li><b>Currencies: </b>{countryCurrencies} ({countryCurrenciesSymbol})</li> } 
-                    <li><b>Languages: </b>{formattedLanguages}</li>
-                </ul>
+            <Stack direction={['column', 'row']} spacing={['30px','200px']} mt='5' >
 
-            </div>
-        </Box>
+            <List fontWeight='300' >
+                <ListItem><b>Native name: </b>{nativeName}</ListItem> 
+                <ListItem><b>Population: </b>{populationFormatted}</ListItem>
+                <ListItem><b>Region: </b>{region}</ListItem>
+                <ListItem><b>Sub Region: </b>{subregion}</ListItem>
+                {capital &&
+                    <ListItem><b>Capital: </b>{capital} </ListItem>}   
+            </List>
 
-        
+            <List
+                >       
+                    <ListItem><b>Top Level Domain: </b>{formattedDomain}</ListItem>
+                
+                    {countryCurrencies && 
+                    <ListItem><b>Currencies: </b>{countryCurrencies} ({countryCurrenciesSymbol})</ListItem> } 
+                    <ListItem><b>Languages: </b>{formattedLanguages}</ListItem>
+            </List>
+            </Stack>
+            </Box>
 
+
+{borders &&
+
+    <Box 
+        // display='inline-flex'
+        mt='55px'
+        // gap='5px'
+        display={['inline-block','inline-flex']}
+        flexWrap='wrap'
+        alignItems='center'
+     >
+
+     
+    <Text as='h3' flexDirection={['column', null]}>Border Countries: </Text>
+ {/* <span> */}
+
+ <Box mb={['50px', null]} >
     
-        
+     {borders?.map((element) => { 
+         const countryName = getCountryName(element);                                  
+         return(
+             <Link to={`/country/${countryName}`} key={element} ml='10px' >
+             <Button
+            //  marginX='1'
+            //  marginY='1'
+            mr='5px'
+            mt='5px'
+            
+             variant='outline'
+             key={element}
+             size='sm'
+             bg={bgColor}
+             fontSize='16px'
+             fontWeight='300'
+             >
+                 {countryName}
+             </Button>
+                </Link>
+                             )
+                         })}
+                         </Box>
+{/* </span> */}
 
-        
-        {borders &&
+</Box>
 
-           <Box gridRowStart='2'
-                gridColumnStart='2'
-                gridRowEnd='3'
-                gridColumnEnd='4'
-                mt='55'>
-           
-               <b>Border Countries:</b> 
-            <span>
-               
-                {borders?.map((element) => { 
-                    const countryName = getCountryName(element);                                  
-                    return(
-                        <Link to={`/country/${countryName}`} key={element} >
-                        <Button 
-                        marginX='1'
-                        marginY='1'
-                        variant='outline'
-                        key={element}
-                        size='sm'
-                        bg={bgColor}
-                        
-                        >
-                            {countryName}
-                        </Button>
-                           </Link>
-                                        )
-                                    })}
-           </span>
-           
-           </Box>
-           
 }
-
-           
-        
-
         </Box>
 
-        {/* <Box 
-        mt='132' 
-        lineHeight='taller'>
-        <li><b>Top Level Domain: </b>{formattedDomain}</li>
-                <li><b>Currencies: </b>{countryCurrencies} ({countryCurrenciesSymbol})</li>
-                <li><b>Languages: </b>{formattedLanguages}</li>
-        </Box> */}
             </Flex>
-        {/* </div> */}
-        {/* </Grid> */}
+
         </div>
         
                 </Container>
-                
         </>
     )
 }
