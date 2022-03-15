@@ -20,7 +20,7 @@ export const Search = () => {
     } );
     const [selectedRegion, setSelectedRegion] = useState('');
     
-    const {data} = useFetchCountries()
+    const {data, loading} = useFetchCountries()
 
     const {searchText} = formValues;
 
@@ -109,7 +109,7 @@ export const Search = () => {
             : 
             (searchText === '') 
             ?
-            <CountriesList data={data}/>
+            <CountriesList data={data} loading={loading}/>
             : 
             (searchText !== '') 
             &&
