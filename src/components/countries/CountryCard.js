@@ -1,4 +1,4 @@
-import { Box, Heading, List, ListItem, Skeleton, useColorModeValue } from '@chakra-ui/react'
+import { Box, Heading, List, ListItem, useColorModeValue } from '@chakra-ui/react'
 import {Link} from 'react-router-dom';
 import React from 'react'
 
@@ -7,19 +7,17 @@ export const CountryCard = ({
     flag,
     population,
     region,
-    capital, loading
+    capital
 }) =>  {
     const textColor = useColorModeValue('hsl(200, 15%, 8%)', 'white')
     const bgColor = useColorModeValue('white', 'hsl(209, 23%, 22%)')
     const populationFormatted = population.toLocaleString('en-US', {maximumFractionDigits:2})
-
     return (
         <>
-        {loading && 
-        <Skeleton isLoaded={!loading}> </Skeleton>}
+
             <Link to={`/country/${name}`}>
             
-            <Box  height='full' width='full' borderRadius='lg' overflow='hidden'  cursor='pointer' className='animate__animated animate__fadeIn shadow card' bg={bgColor} color={textColor} >
+            <Box  height='full' width='full' borderRadius='lg' overflow='hidden'  cursor='pointer' className='animate__animated animate__fadeIn shadow card'  bg={bgColor} color={textColor} >
                 
                 <img src={flag}  alt={name} ></img>
                     
@@ -45,7 +43,9 @@ export const CountryCard = ({
                                 <List>
                                     <ListItem><b>Population: </b>{populationFormatted}</ListItem>
                                     <ListItem><b>Region: </b>{region}</ListItem>
-                                    <ListItem><b>Capital: </b>{capital}</ListItem>
+                                    
+                                    {capital &&
+                                        <ListItem><b>Capital: </b>{capital} </ListItem>} 
                                 </List>
                         </Box>
             </Box>

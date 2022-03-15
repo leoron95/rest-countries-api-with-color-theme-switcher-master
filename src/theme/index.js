@@ -10,15 +10,9 @@ const theme = extendTheme({
             h2:{
                 fontFamily: 'Nunito Sans',
             },
-            Heading:{
-                baseStyle: {
-                    fontFamily: "Inter",
-                    // fontWeight: "600",
-                  },
-            },
             h1:{
                 fontFamily: 'Nunito Sans',
-                // fontWeight: 100
+
             },
             h3:{
                 fontWeight:600
@@ -30,9 +24,6 @@ const theme = extendTheme({
                 fontWeight:800
             }
 
-            // h1:{
-            //     fontSize: ''
-            // }
         }
     },
 

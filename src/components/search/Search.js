@@ -118,7 +118,7 @@ const countriesRegion = getCountriesByRegion(countries, selectedRegion)
             : 
             (searchText === '') 
             ?
-            <CountriesList data={data} loading={loading} />
+            <CountriesList data={data}/>
             : 
             (searchText !== '') 
             &&

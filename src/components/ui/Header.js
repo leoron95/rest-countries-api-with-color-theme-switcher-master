@@ -38,6 +38,7 @@ export const Header = ({bgColor}) => {
                     fontSize={['sm','md']}
                     width='fit-content'
                     onClick={toggleColorMode}
+                    // _focus={{ boxShadow: "none", }}
                     >
                         {colorMode === 'light' ? 'Dark' : 'Light'} Mode 
                 </Button>
