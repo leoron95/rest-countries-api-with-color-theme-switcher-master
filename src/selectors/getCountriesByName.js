@@ -5,8 +5,6 @@ export const getCountriesByName = (data ,name='') => {
     }
 
     name = name.toLowerCase()
-
-
     return data.filter(country => country.name.toLowerCase().includes(name)) || []
 
 }

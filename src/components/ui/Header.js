@@ -1,7 +1,7 @@
 import React from 'react'
-import { Button, Flex, Heading, Spacer, Box, Container, useColorMode, useColorModeValue } from '@chakra-ui/react'
+import { Button, Flex, Heading, Container, useColorMode, useColorModeValue } from '@chakra-ui/react'
 import { MoonIcon, SunIcon } from '@chakra-ui/icons'
-import { Link } from 'react-router-dom'
+
 
 
 export const Header = ({bgColor}) => {
@@ -11,24 +11,15 @@ export const Header = ({bgColor}) => {
     return (
         <>
         <Container 
-        // maxW={['container.xl','8xl']} 
-        // centerContent 
-        // maxWidth= 'full'
-        bg={bgColor} 
-        color={textColor} 
-        // className='container-header'
-        // width={['100%', '100%']}
-        // margin='0px'
-        maxW={[null,'1440px']}
-        // width='full'
-        paddingX={['0px','16px']}
-        
-        // width='max-content'
+            bg={bgColor} 
+            color={textColor} 
+            maxW={[null,'1440px']}
+            paddingX={['0px','16px']}
         >
         <Flex  justifyContent='space-between' >
 
         <Heading mt='5' mb='5' as='h1'  fontSize={['sm','28px']}  fontFamily='Nunito Sans' fontWeight='800' >Where in the World?</Heading>
- 
+
             <Button
                     leftIcon={colorMode === 'light' ? <MoonIcon  /> : <SunIcon />}
                     colorScheme='black' 

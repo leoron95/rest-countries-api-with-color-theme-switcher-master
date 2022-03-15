@@ -10,17 +10,18 @@ export const AppRouter = () => {
     const bgColor = useColorModeValue('white', 'hsl(209, 23%, 22%)')
     return (
         <BrowserRouter>
-            <Container maxW={[null,'full']}  boxShadow='lg' bg={bgColor} 
+            <Container maxW={[null,'full']}  boxShadow='lg' bg={bgColor} >
 
-  >
                 <Header bgColor={bgColor}/>
+
             </Container>
+
             <Routes>
-            <Route path="country/:countryName" element={<CountryDetails/>} />
+                <Route path="country/:countryName" element={<CountryDetails/>} />
 
-            <Route path="/" element={<CountriesApp/>} />
-
+                <Route path="/" element={<CountriesApp/>} />
             </Routes>
+            
         </BrowserRouter>
     )
 }

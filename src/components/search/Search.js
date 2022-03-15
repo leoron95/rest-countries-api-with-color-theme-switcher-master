@@ -1,4 +1,4 @@
-import React, {useMemo, useState, useEffect} from 'react'
+import React, {useState} from 'react'
 
 import { CountryCard } from '../countries/CountryCard';
 import { CountriesList } from '../countries/CountriesList';
@@ -7,7 +7,7 @@ import { useForm } from '../../hooks/useForm';
 import {getCountriesByName} from '../../selectors/getCountriesByName';
 import {getCountriesByRegion} from '../../selectors/getCountriesByRegion'
 
-import { Input, InputGroup, InputLeftElement, Select,Flex, Box, Spacer, Grid, Skeleton, useColorModeValue} from '@chakra-ui/react'
+import { Input, InputGroup, InputLeftElement, Select,Flex, Box, Grid, useColorModeValue} from '@chakra-ui/react'
 import { SearchIcon } from '@chakra-ui/icons'
 
 
@@ -20,13 +20,8 @@ export const Search = () => {
     } );
     const [selectedRegion, setSelectedRegion] = useState('');
     
-    const {data, loading} = useFetchCountries()
-    const [countries,setCountries] = useState(data);
-    useEffect(() => {
-        setCountries(data);
-    },[data])
-    console.log('Data', countries, loading)
-    
+    const {data} = useFetchCountries()
+
     const {searchText} = formValues;
 
     const handleSearch = (e) => {
@@ -37,16 +32,13 @@ export const Search = () => {
         setSelectedRegion(e.target.value);
     }
 
-// const countriesSearch = useMemo(() => getCountriesByName(countries, searchText), [countries, searchText])
-const countriesSearch = getCountriesByName(countries, searchText)
+    const countriesSearch = getCountriesByName(data, searchText)
 
-// const countriesRegion = useMemo( () => getCountriesByRegion(countries, selectedRegion), [countries, selectedRegion] ) 
-const countriesRegion = getCountriesByRegion(countries, selectedRegion)
+    const countriesRegion = getCountriesByRegion(data, selectedRegion)
 
     return (
         <>
         <Flex width='full' 
-        // className='regionSelector'
         flexDirection={['column','column', 'row', 'row']}
         justifyContent='space-between'
         >
@@ -69,7 +61,6 @@ const countriesRegion = getCountriesByRegion(countries, selectedRegion)
                                         autoComplete='off'
                                         onChange={handleInputChange}
                                         value={searchText}
-                                        // width={[null, 'lg']}
                                         width='lg'
                                         size='lg'
                                         bg={bgColor}

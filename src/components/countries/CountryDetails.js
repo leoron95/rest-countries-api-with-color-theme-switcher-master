@@ -8,7 +8,6 @@ import { ArrowBackIcon } from '@chakra-ui/icons';
 
 export const CountryDetails = () => {
 
-    const textColor = useColorModeValue('hsl(200, 15%, 8%)', 'white')
     const bgColor = useColorModeValue('white', 'hsl(209, 23%, 22%)')
 
     const {countryName} = useParams();

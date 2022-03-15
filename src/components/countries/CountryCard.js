@@ -24,7 +24,6 @@ export const CountryCard = ({
                     <Box
                         mt='6'
                         ml='5'
-                        // as='h2'
                         lineHeight='taller'
                         className='card-title'
                         fontWeight='800'
