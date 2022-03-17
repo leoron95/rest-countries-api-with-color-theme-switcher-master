@@ -1,7 +1,7 @@
 {
   "name": "countries-rest-api-frontendmentor",
   "version": "0.1.0",
-  "homepage": "https://leoron95.github.io/rest-countries-api-with-color-theme-switcher-master",
+  "homepage": ".",
   "private": true,
   "dependencies": {
     "@chakra-ui/icons": "^1.1.5",
